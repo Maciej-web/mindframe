@@ -2,29 +2,40 @@ import React from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Button variant
+   * Button-Variante bestimmt primäres Erscheinungsbild
    */
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'accent' | 'secondary' | 'outline' | 'ghost';
+  
   /**
-   * Button size
+   * Button-Größe
    */
   size?: 'sm' | 'md' | 'lg';
+  
   /**
-   * Is the button in a loading state
+   * Zeigt Ladezustand an
    */
   isLoading?: boolean;
+  
   /**
-   * Optional icon to display before the button text
+   * Optionales Icon vor dem Text
    */
   startIcon?: React.ReactNode;
+  
   /**
-   * Optional icon to display after the button text
+   * Optionales Icon nach dem Text
    */
   endIcon?: React.ReactNode;
+  
+  /**
+   * Volle Breite des Containers nutzen
+   */
+  fullWidth?: boolean;
 }
 
 /**
- * Primary UI component for user interaction
+ * Button-Komponente entsprechend des MindFrame Design-Systems
+ * 
+ * Nutzt unsere Design-Tokens für konsistentes Look & Feel
  */
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -33,32 +44,49 @@ export const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   startIcon,
   endIcon,
+  fullWidth = false,
   className = '',
   disabled,
+  type = 'button',
   ...props
 }) => {
-  // Base classes always applied
-  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+  // Basis-Klassen für alle Buttons
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-button transition-button duration-button focus:outline-none';
   
-  // Size classes
+  // Größen-Klassen
   const sizeClasses = {
     sm: 'px-3 py-1.5 text-sm',
     md: 'px-4 py-2 text-base',
     lg: 'px-5 py-2.5 text-lg',
   };
   
-  // Variant classes
+  // Varianten-Klassen
   const variantClasses = {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 disabled:bg-primary-300',
-    secondary: 'bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500 disabled:bg-secondary-300',
-    outline: 'border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50 focus:ring-neutral-500 disabled:bg-neutral-100 disabled:text-neutral-400',
+    // Navy-basierte Primärbuttons
+    primary: 'bg-primary text-white shadow-button hover:bg-primary-hover hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:bg-primary-100 disabled:text-primary-300 disabled:shadow-none',
+    
+    // Türkis-basierte Akzentbuttons
+    accent: 'bg-accent text-white shadow-button hover:bg-accent-hover hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-accent-300 disabled:bg-accent-100 disabled:text-accent-300 disabled:shadow-none',
+    
+    // Beige-basierte Sekundärbuttons
+    secondary: 'bg-secondary-light text-primary shadow-button hover:bg-secondary hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-secondary-300 disabled:bg-secondary-50 disabled:text-secondary-300 disabled:shadow-none',
+    
+    // Outline Variante
+    outline: 'bg-white border border-primary text-primary shadow-sm hover:bg-primary-50 hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:bg-white disabled:text-primary-200 disabled:border-primary-100 disabled:shadow-none',
+    
+    // Ghost Variante (transparent)
+    ghost: 'bg-transparent text-primary hover:bg-primary-50 focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:text-primary-200',
   };
   
-  // Combine all classes
-  const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+  // Breiten-Klasse
+  const widthClass = fullWidth ? 'w-full' : '';
+  
+  // Kombination aller Klassen
+  const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${widthClass} ${className}`;
   
   return (
     <button
+      type={type}
       className={buttonClasses}
       disabled={disabled || isLoading}
       {...props}
