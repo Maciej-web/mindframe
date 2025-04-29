@@ -1,32 +1,56 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": ".",
+    /* Grundlegende Optionen */
+    "target": "ES2020",               /* ECMAScript-Zielversion */
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],  /* Zu verwendende Bibliotheksdateien */
+    "useDefineForClassFields": true,  /* Definiert Klasseneigenschaften wie statische Felder */
+    "module": "ESNext",               /* Modulcode-Generierungsmethode */
+    "moduleResolution": "bundler",    /* Wie werden Module aufgelöst */
+    "jsx": "react-jsx",               /* JSX-Codegenerierung: React-17+ JSX-Transform */
+    "allowJs": true,                  /* JavaScript-Dateien zulassen */
+    "resolveJsonModule": true,        /* Erlaubt Importieren von .json-Dateien */
+    "isolatedModules": true,          /* Jede Datei als separates Modul behandeln */
+    "allowSyntheticDefaultImports": true, /* Default-Imports aus Modulen ohne Standard-Export zulassen */
+    "esModuleInterop": true,          /* CommonJS und ES Module kompatibel machen */
+
+    /* Pfade und Auflösung */
+    "baseUrl": ".",                   /* Basis-URL für relative Pfade */
     "paths": {
-      "@/*": ["src/*"]
-    }
+      "@/*": ["src/*"]                /* Pfadaliasse einrichten */
+    },
+    
+    /* Typprüfung */
+    "strict": true,                   /* Alle strengen Typüberprüfungen aktivieren */
+    "strictNullChecks": true,         /* Null und undefined müssen explizit geprüft werden */
+    "strictFunctionTypes": true,      /* Strikte Funktionstypen-Prüfung */
+    "strictBindCallApply": true,      /* Prüft die Argumente von bind, call und apply */
+    "strictPropertyInitialization": true, /* Klassenproperties müssen im Konstruktor initialisiert werden */
+    "noImplicitAny": true,            /* Fehler bei implizitem any-Typ */
+    "noImplicitThis": true,           /* Fehler bei implizitem this-Typ */
+    "alwaysStrict": true,             /* Parse im strikten Modus und 'use strict' einfügen */
+    "noUncheckedIndexedAccess": true, /* Index-Zugriffe als möglicherweise undefined betrachten */
+    
+    /* Linting */
+    "noUnusedLocals": true,           /* Fehler bei ungenutzten lokalen Variablen */
+    "noUnusedParameters": true,       /* Fehler bei ungenutzten Parametern */
+    "noImplicitReturns": true,        /* Fehler wenn nicht alle Code-Pfade einen Wert zurückgeben */
+    "noFallthroughCasesInSwitch": true, /* Fehler bei Fallthrough in switch-Anweisungen */
+    "noEmit": true,                   /* Keine Ausgabedateien erzeugen */
+    "skipLibCheck": true,             /* Skip type checking of declaration files */
+    "forceConsistentCasingInFileNames": true, /* Konsistente Groß-/Kleinschreibung bei Dateipfaden erzwingen */
+    
+    /* Fortgeschrittene Optionen */
+    "allowUnreachableCode": false,    /* Fehler bei unerreichbarem Code */
+    "allowUnusedLabels": false,       /* Fehler bei ungenutzten Labels */
+    "noImplicitOverride": true,       /* Explicit override keyword required */
+    "verbatimModuleSyntax": true      /* Import type muss explizit sein */
   },
-  "include": ["src"]
+  "include": ["src"],                /* Einzubeziehende Dateien */
+  "exclude": ["node_modules", "dist"], /* Auszuschließende Dateien */
+  "references": [
+    { 
+      "path": "./tsconfig.node.json",
+      "noEmit": false
+    } /* Referenz auf Node-spezifische TypeScript-Konfiguration */
+  ]
 }
