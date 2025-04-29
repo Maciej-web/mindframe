@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Eigene Basis-Stile */
+@layer base {
+  html {
+    @apply text-neutral-800;
+  }
+  h1 {
+    @apply text-2xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-xl font-bold mb-3;
+  }
+  h3 {
+    @apply text-lg font-bold mb-2;
+  }
+}
+
+/* Komponenten Layer für wiederverwendbare Klassen */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700;
+  }
+  .btn-secondary {
+    @apply btn bg-secondary-600 text-white hover:bg-secondary-700;
+  }
+  .btn-outline {
+    @apply btn border border-neutral-300 hover:bg-neutral-100;
+  }
+  .input {
+    @apply w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500;
+  }
+  .card {
+    @apply bg-white p-6 rounded-lg shadow-soft;
+  }
+}
