@@ -4,7 +4,6 @@ import path from 'path';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -20,20 +19,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    // Optimierung für Produktionsbuilds
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Vendorpakete in eigene Chunks aufteilen
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          // State Management in eigenem Chunk
-          state: ['@reduxjs/toolkit', 'react-redux'],
-        },
-      },
-    },
   },
   css: {
-    // PostCSS Konfiguration (für Tailwind)
+    // PostCSS Konfiguration für Tailwind
     postcss: {
       plugins: [tailwindcss(), autoprefixer()],
     },

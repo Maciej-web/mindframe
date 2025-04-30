@@ -49,8 +49,7 @@
   "exclude": ["node_modules", "dist"], /* Auszuschließende Dateien */
   "references": [
     { 
-      "path": "./tsconfig.node.json",
-      "noEmit": false
+      "path": "./tsconfig.node.json"
     } /* Referenz auf Node-spezifische TypeScript-Konfiguration */
   ]
 }

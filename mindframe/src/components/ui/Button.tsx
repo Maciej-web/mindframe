@@ -60,21 +60,21 @@ export const Button: React.FC<ButtonProps> = ({
     lg: 'px-5 py-2.5 text-lg',
   };
   
-  // Varianten-Klassen
+  // Varianten-Klassen - alle mit türkiser Farbe (primary = #2dd4bd)
   const variantClasses = {
-    // Navy-basierte Primärbuttons
+    // Standard-Button mit türkisem Hintergrund
     primary: 'bg-primary text-white shadow-button hover:bg-primary-hover hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:bg-primary-100 disabled:text-primary-300 disabled:shadow-none',
     
-    // Türkis-basierte Akzentbuttons
-    accent: 'bg-accent text-white shadow-button hover:bg-accent-hover hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-accent-300 disabled:bg-accent-100 disabled:text-accent-300 disabled:shadow-none',
+    // Identisch mit primary - auch türkis
+    accent: 'bg-primary text-white shadow-button hover:bg-primary-hover hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:bg-primary-100 disabled:text-primary-300 disabled:shadow-none',
     
-    // Beige-basierte Sekundärbuttons
-    secondary: 'bg-secondary-light text-primary shadow-button hover:bg-secondary hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-secondary-300 disabled:bg-secondary-50 disabled:text-secondary-300 disabled:shadow-none',
+    // Heller Hintergrund mit türkiser Schrift
+    secondary: 'bg-white text-primary border border-primary-100 shadow-button hover:bg-primary-50 hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:bg-white disabled:text-primary-200 disabled:shadow-none',
     
-    // Outline Variante
+    // Weißer Hintergrund mit türkiser Schrift und Border
     outline: 'bg-white border border-primary text-primary shadow-sm hover:bg-primary-50 hover:shadow-button-hover focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:bg-white disabled:text-primary-200 disabled:border-primary-100 disabled:shadow-none',
     
-    // Ghost Variante (transparent)
+    // Transparenter Button mit türkiser Schrift
     ghost: 'bg-transparent text-primary hover:bg-primary-50 focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 disabled:text-primary-200',
   };
   
