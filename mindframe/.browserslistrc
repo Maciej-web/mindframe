@@ -1,0 +1,15 @@
+# Unterstützte Browser für MindFrame
+# Dies wird von PostCSS, Autoprefixer, Babel usw. verwendet
+
+# Produktions-Einstellungen (default)
+[production]
+>0.2%
+not dead
+not op_mini all
+not IE 11
+
+# Entwicklungs-Einstellungen
+[development]
+last 1 chrome version
+last 1 firefox version
+last 1 safari version

@@ -1,0 +1,20 @@
+{
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "ms-vscode.vscode-typescript-next",
+      "formulahendry.auto-rename-tag",
+      "streetsidesoftware.code-spell-checker",
+      "streetsidesoftware.code-spell-checker-german",
+      "mikestead.dotenv",
+      "dsznajder.es7-react-js-snippets",
+      "usernamehw.errorlens",
+      "christian-kohler.path-intellisense",
+      "naumovs.color-highlight",
+      "ms-vsliveshare.vsliveshare",
+      "editorconfig.editorconfig",
+      "orta.vscode-jest",
+      "vitest.explorer"
+    ]
+  }

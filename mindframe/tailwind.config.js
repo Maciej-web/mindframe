@@ -1,6 +1,5 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,53 +7,98 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primäre Farben
+        // Primärfarbe: Navy (für Text und sekundäre Elemente)
+        navy: {
+          50: '#f7f8f9',
+          100: '#ebeef2',
+          200: '#d2dae3',
+          300: '#a9b9cc',
+          400: '#7896b2',
+          500: '#5f7d9c',
+          600: '#486581',
+          700: '#334e68',  // Basis-Navy aus Logo
+          800: '#243b53',
+          900: '#1e293b',  // Text-Farbe
+        },
+        
+        // Akzentfarbe: Türkis (für interaktive Elemente)
+        turquoise: {
+          50: '#effffc',
+          100: '#c8fff6',
+          200: '#9dfeef',
+          300: '#63f9e8',
+          400: '#2dd4bd',  // Basis-Türkis aus Logo
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+        },
+        
+        // Alternative Akzente für verschiedene Module
+        accent: {
+          purple: '#9061f9',  // Lila
+          pink: '#e74694',    // Pink
+          orange: '#f97316',  // Orange
+          blue: '#3b82f6',    // Blau
+        },
+        
+        // Semantische Farben
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          DEFAULT: '#2dd4bd', // turquoise-400 als Primärfarbe
+          hover: '#14b8a6',   // turquoise-500
+          light: '#63f9e8',   // turquoise-300
+          dark: '#0d9488',    // turquoise-600
         },
-        // Sekundäre Farben
-        secondary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-        },
-        // Neutrale Farben
-        neutral: {
-          50: '#f9fafb',
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827',
-        },
+        
+        // Hintergrundfarben
+        background: {
+          page: '#ffffff',     // Weiß
+          sidebar: '#ffffff',  // Weiß
+          card: '#ffffff',     // Weiß
+        }
       },
+      
+      // Typografie
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Inter var', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'display': ['Montserrat', 'Inter var', 'system-ui', 'sans-serif'],
       },
+      
+      // Schatten für Komponenten
       boxShadow: {
-        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'card': '0 4px 12px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03)',
+        'card-hover': '0 6px 16px -3px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.05)',
+        'sidebar': '0 0 20px rgba(0, 0, 0, 0.05)',
+        'button': '0 2px 4px 0 rgba(0, 0, 0, 0.05)',
+        'button-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.05)',
+      },
+      
+      // Übergänge
+      transitionProperty: {
+        'card': 'box-shadow, transform',
+        'button': 'color, background-color, border-color, box-shadow, transform',
+      },
+      transitionDuration: {
+        'DEFAULT': '200ms',
+      },
+      transitionTimingFunction: {
+        'DEFAULT': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      
+      // Border-Radius
+      borderRadius: {
+        'card': '0.75rem',    // 12px
+        'button': '0.5rem',   // 8px
+        'sidebar': '0.75rem', // 12px
       },
     },
   },
-  plugins: [],
-}
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
+};

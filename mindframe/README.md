@@ -52,3 +52,100 @@ export default tseslint.config({
   },
 })
 ```
+# MindFrame
+
+MindFrame ist eine Web-App zur mentalen Klarheit und Entscheidungsunterstützung. Sie bietet KI-gestützte Strukturanalyse und Produktivitätstools.
+
+## Projekt-Überblick
+
+MindFrame hilft Nutzern durch eine Kombination aus eigens entwickelten Modulen:
+
+- **Brain Organizer**: Gedanken strukturieren und clustern
+- **Decision Wizard**: Entscheidungsfindung durch systematische Bewertung
+- **Focus Mapper**: Ziele definieren und in Meilensteine unterteilen
+- **Reflexionslogbuch**: Erfahrungen und Gedanken festhalten
+
+## Tech-Stack
+
+- **Frontend**: React + TypeScript, Tailwind CSS
+- **State Management**: Redux Toolkit
+- **Routing**: React Router DOM
+- **Authentifizierung**: Firebase Auth / Supabase
+- **Hosting/CI/CD**: Vercel / Netlify mit GitHub Actions
+- **KI-Integration**: OpenAI API (ChatGPT) & Anthropic Claude 3.7
+- **Payment**: Stripe
+- **Datenbank**: Firebase / Supabase / MongoDB
+
+## Entwicklungsumgebung einrichten
+
+### Voraussetzungen
+
+- Node.js (Version 18 oder höher)
+- npm oder yarn
+- Git
+
+### Installation
+
+1. Repository klonen:
+   ```bash
+   git clone https://github.com/your-username/mindframe.git
+   cd mindframe
+   ```
+
+2. Abhängigkeiten installieren:
+   ```bash
+   npm install
+   ```
+
+3. Entwicklungsserver starten:
+   ```bash
+   npm run dev
+   ```
+
+4. Öffne die App im Browser:
+   ```
+   http://localhost:5173
+   ```
+
+### Weitere Befehle
+
+- **Lint Code**: `npm run lint`
+- **Typ-Überprüfung**: `npm run typecheck`
+- **Tests ausführen**: `npm run test`
+- **Build erstellen**: `npm run build`
+- **Storybook starten**: `npm run storybook`
+- **Code formatieren**: `npm run format`
+
+## Projekt-Struktur
+
+```
+src/
+  ├── assets/        # Statische Assets wie Bilder, Schriftarten
+  ├── components/    # React-Komponenten
+  │     ├── ui/      # Wiederverwendbare UI-Komponenten
+  │     ├── layout/  # Layout-Komponenten
+  │     └── modules/ # Modulspezifische Komponenten
+  ├── context/       # React Context Provider
+  ├── hooks/         # Benutzerdefinierte React Hooks
+  ├── lib/           # Externe Bibliotheken und Konfigurationen
+  ├── pages/         # Seitenkomponenten
+  ├── services/      # API-Dienste und externe Integrationen
+  ├── store/         # Redux Toolkit Store-Konfiguration
+  │     └── slices/  # Redux-Slices für verschiedene Features
+  ├── types/         # TypeScript-Typdefinitionen
+  └── utils/         # Hilfsfunktionen
+```
+
+## Branching-Strategie
+
+- Hauptbranches: `main` (Produktion), `develop` (Entwicklung)
+- Feature-Branches: `feature/<modul-name>`
+- Bugfix-Branches: `bugfix/<beschreibung>`
+- Release-Branches: `release/v<version>`
+
+## Beitragen
+
+1. Forke das Repository
+2. Erstelle einen Feature-Branch
+3. Committe deine Änderungen mit aussagekräftigen Commit-Nachrichten
+4. Öffne einen Pull Request gegen den `develop`-Branch
