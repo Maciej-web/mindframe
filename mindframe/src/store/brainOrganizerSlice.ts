@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './index';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from './index';
 
 // Pseudo-Service für BrainOrganizer (wird später durch echte API ersetzt)
 const brainOrganizerService = {

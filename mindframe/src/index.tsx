@@ -6,14 +6,10 @@ import { store, persistor } from './store';
 import App from './App';
 import './index.css';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>

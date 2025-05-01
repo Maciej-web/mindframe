@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import './index.css';
 
+
 // Placeholder-Komponenten für die anderen Seiten
 const BrainOrganizer = () => (
   <div className="h-full flex items-center justify-center">

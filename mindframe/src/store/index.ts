@@ -44,7 +44,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV !== 'production',
+    devTools: true, // ✅ HIER aktivierst du Redux DevTools
 });
 
 export const persistor = persistStore(store);

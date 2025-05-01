@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './index';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from './index';
 
 // Pseudo-Service für Auth (wird später durch Firebase/Supabase ersetzt)
 const authService = {
