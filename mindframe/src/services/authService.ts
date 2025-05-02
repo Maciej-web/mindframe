@@ -1,4 +1,4 @@
-import { User, LoginPayload, RegisterPayload } from '../store/authSlice';
+import type { User, LoginPayload, RegisterPayload } from '../store/authSlice';
 
 /**
  * Auth Service

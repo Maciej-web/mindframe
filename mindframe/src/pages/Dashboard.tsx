@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import Header from '../components/layout/Header';
+
 
 const Dashboard: React.FC = () => {
   const [counter, setCounter] = useState(0);

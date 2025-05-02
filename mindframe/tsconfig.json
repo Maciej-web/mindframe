@@ -12,6 +12,7 @@
     "isolatedModules": true,          /* Jede Datei als separates Modul behandeln */
     "allowSyntheticDefaultImports": true, /* Default-Imports aus Modulen ohne Standard-Export zulassen */
     "esModuleInterop": true,          /* CommonJS und ES Module kompatibel machen */
+    "allowImportingTsExtensions": true,
 
     /* Pfade und Auflösung */
     "baseUrl": ".",                   /* Basis-URL für relative Pfade */
