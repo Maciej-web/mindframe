@@ -5,7 +5,6 @@ import { selectUser, setUser, setProfileData } from '../../store/authSlice';
 import authService from '../../services/authService';
 import MainLayout from '@/components/layout/MainLayout';
 
-
 const Profile: React.FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
@@ -24,6 +23,17 @@ const Profile: React.FC = () => {
     }
   }, [user]);
 
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPhotoURL(reader.result as string); // base64-Vorschau
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleSaveProfile = async () => {
     if (!user) return;
 
@@ -39,7 +49,6 @@ const Profile: React.FC = () => {
 
       dispatch(setProfileData({ displayName, photoURL }));
 
-      
       setSuccessMessage('Profil erfolgreich aktualisiert');
       setIsEditing(false);
 
@@ -94,13 +103,13 @@ const Profile: React.FC = () => {
 
               {isEditing && (
                 <>
-                  <label htmlFor="photoURL" className="text-sm text-gray-600 mb-1">Bild-URL</label>
+                  <label htmlFor="photoUpload" className="text-sm text-gray-600 mb-1">Bild hochladen</label>
                   <input
-                    type="text"
-                    id="photoURL"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-                    value={photoURL}
-                    onChange={(e) => setPhotoURL(e.target.value)}
+                    type="file"
+                    id="photoUpload"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="block w-full text-sm text-gray-500"
                   />
                 </>
               )}
