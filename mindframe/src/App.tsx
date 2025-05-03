@@ -13,12 +13,9 @@ import ForgotPassword from './modules/Auth/ForgotPassword.tsx';
 import Profile from './modules/Auth/Profile.tsx';
 import Settings from './modules/Auth/Settings.tsx';
 
+import BrainOrganizer from './modules/BrainOrganizer';
+
 // Placeholder für weitere Module
-const BrainOrganizer = () => (
-  <div className="h-full flex items-center justify-center">
-    <h1 className="text-2xl font-bold">Brain Organizer Modul wird geladen...</h1>
-  </div>
-);
 
 const DecisionWizard = () => (
   <div className="h-full flex items-center justify-center">
@@ -50,8 +47,7 @@ function App() {
         {/* Geschützte Routen */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/brain-organizer" element={<BrainOrganizer />} />
-          <Route path="/decision-wizard" element={<DecisionWizard />} />
+          <Route path="/brain-organizer/*" element={<BrainOrganizer />} />          <Route path="/decision-wizard" element={<DecisionWizard />} />
           <Route path="/focus-mapper" element={<FocusMapper />} />
           <Route path="/reflexionslogbuch" element={<Reflexionslogbuch />} />
           <Route path="/profile" element={<Profile />} />

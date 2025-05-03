@@ -13,7 +13,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './authSlice';
-import brainOrganizerReducer from './brainOrganizerSlice';
+import brainOrganizerReducer from '../modules/BrainOrganizer/store/BrainOrganizerSlice';
+
 
 // Zentrale Persistenz-Konfiguration
 const rootPersistConfig = {
