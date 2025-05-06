@@ -1,47 +1,84 @@
 // src/modules/BrainOrganizer/services/brainOrganizerService.ts
-import { v4 as uuidv4 } from 'uuid';
-import type { BrainDump, Thought, Cluster } from '../types';
+import { v4 as uuidv4 } from 'uuid'
+import axios from 'axios'
+import type { BrainDump, Thought, Cluster } from '../types'
 
-// In a real app, these would be API calls
+/**
+ * Verschiebt einen Thought in einen neuen Cluster (oder entfernt ihn, wenn clusterId = null).
+ * Named-Export, so dass man auch direkt
+ *   import { reassignThought } from '…/brainOrganizerService'
+ * nutzen kann.
+ */
+export async function reassignThought(
+  thoughtId: string,
+  clusterId: string | null
+): Promise<Thought> {
+  // Body nur mit clusterId, wenn nicht null
+  const body: { thoughtId: string; clusterId?: string } = { thoughtId }
+  if (clusterId !== null) {
+    body.clusterId = clusterId
+  }
+
+  // Echte API-Anfrage
+  const response = await axios.post<Thought>('/api/thoughts/reassign', body)
+  return response.data
+
+  // Falls noch kein Backend vorhanden, alternativ mocken:
+  // return {
+  //   id: thoughtId,
+  //   content: '',                     // ggf. Platzhalter
+  //   clusterId,                       // string | null
+  //   createdAt: new Date().toISOString(),
+  //   updatedAt: new Date().toISOString(),
+  // } as Thought
+}
+
+/**
+ * Das zentrale Service-Objekt mit allen Methoden
+ */
 export const brainOrganizerService = {
+  /** Speichert den Raw-Text und gibt einen BrainDump zurück */
   saveBrainDump: async (content: string): Promise<BrainDump> => {
-    // Placeholder for API call
     const brainDump: BrainDump = {
       id: uuidv4(),
       content,
-      userId: 'current-user-id', // Would come from auth context
+      userId: 'current-user-id',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-    };
-    
-    return brainDump;
+    }
+    return brainDump
   },
-  
-  reassignThought: async (thoughtId: string, clusterId: string) => {
-    // Placeholder for API call
-    return { thoughtId, clusterId };
+
+  /** Benennt einen Cluster um */
+  renameCluster: async (
+    clusterId: string,
+    name: string
+  ): Promise<Cluster> => {
+    return {
+      id: clusterId,
+      name,
+      description: '',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }
   },
-  
-  renameCluster: async (clusterId: string, name: string) => {
-    // Placeholder for API call
-    return { clusterId, name };
-  },
-  
+
+  /** Erstellt einen neuen Cluster */
   createCluster: async (name: string): Promise<Cluster> => {
-    // Placeholder for API call
-    const cluster: Cluster = {
+    return {
       id: uuidv4(),
       name,
       description: '',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-    };
-    
-    return cluster;
+    }
   },
-  
-  deleteCluster: async (clusterId: string) => {
-    // Placeholder for API call
-    return clusterId;
+
+  /** Löscht einen Cluster und gibt seine ID zurück */
+  deleteCluster: async (clusterId: string): Promise<string> => {
+    return clusterId
   },
-};
+
+  // Die neu exportierte Funktion als Property nachreichen
+  reassignThought,
+}

@@ -27,7 +27,7 @@ const rootPersistConfig = {
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['user'], // Nur der User wird persistiert
+  whitelist: ['user', 'brainOrganizer'], // Nur der User wird persistiert
 };
 
 // Root Reducer mit allen Modul-Reducern

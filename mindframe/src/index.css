@@ -91,3 +91,37 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-dark;
   }
 }
+
+/* Drag & Drop Animationen und Effekte */
+@layer components {
+  /* Add animation for drag and drop */
+  .dragging {
+    animation: dragAnimation 0.2s ease;
+  }
+
+  @keyframes dragAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Add hover effects for better UX */
+  .drag-handle {
+    cursor: grab;
+  }
+
+  .drag-handle:active {
+    cursor: grabbing;
+  }
+
+  /* Transition for drop zones */
+  .drop-zone-active {
+    @apply transition-all ease-in-out duration-200;
+  }
+}

@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { brainOrganizerService } from '../services/brainOrganizerService';
 import { aiService } from '../services/aiService';
-import type { Thought, Cluster, BrainDump } from '../types/index';
+import type { Thought, Cluster, BrainDump } from '../types';
 
 interface BrainOrganizerState {
   brainDumps: BrainDump[];
@@ -53,15 +53,20 @@ export const clusterThoughts = createAsyncThunk(
 );
 
 export const reassignThought = createAsyncThunk(
-  'brainOrganizer/reassignThought',
-  async ({ thoughtId, clusterId }: { thoughtId: string; clusterId: string }, { rejectWithValue }) => {
-    try {
-      return await brainOrganizerService.reassignThought(thoughtId, clusterId);
-    } catch (error) {
-      return rejectWithValue((error as Error).message);
+    'brainOrganizer/reassignThought',
+    async ({ thoughtId, clusterId }: { thoughtId: string; clusterId: string | null }, { rejectWithValue }) => {
+      try {
+        console.log(`Reassigning thought ${thoughtId} to cluster ${clusterId || 'uncategorized'}`);
+        // Bei '' oder leerer string setzen wir null
+        const finalClusterId = clusterId === '' ? null : clusterId;
+        
+        // Simuliere einen API-Call
+        return { thoughtId, clusterId: finalClusterId };
+      } catch (error) {
+        return rejectWithValue((error as Error).message);
+      }
     }
-  }
-);
+  );
 
 export const renameCluster = createAsyncThunk(
   'brainOrganizer/renameCluster',
@@ -177,23 +182,20 @@ const brainOrganizerSlice = createSlice({
       .addCase(reassignThought.fulfilled, (state, action) => {
         const { thoughtId, clusterId } = action.payload;
         const thoughtIndex = state.thoughts.findIndex(t => t.id === thoughtId);
-        if (thoughtIndex !== -1) {
-          const thought = state.thoughts[thoughtIndex];
-          if (thought) {
-            thought.clusterId = clusterId;
-          }
+        
+        if (thoughtIndex !== -1 && state.thoughts[thoughtIndex]) {
+          console.log(`Reducer: Reassigning thought ${thoughtId} to ${clusterId || 'uncategorized'}`);
+          state.thoughts[thoughtIndex].clusterId = clusterId;
         }
       })
-      
       // Handle renameCluster
       .addCase(renameCluster.fulfilled, (state, action) => {
-        const { clusterId, name } = action.payload;
-        const clusterIndex = state.clusters.findIndex(c => c.id === clusterId);
-        if (clusterIndex !== -1) {
-          const cluster = state.clusters[clusterIndex];
-          if (cluster) {
-            cluster.name = name;
-          }
+        const { id, name } = action.payload;
+        const clusterIndex = state.clusters.findIndex(c => c.id === id);
+        
+        if (clusterIndex !== -1 && state.clusters[clusterIndex]) {
+          state.clusters[clusterIndex].name = name;
+          console.log(`Cluster ${id} renamed to ${name}`);
         }
       })
       
