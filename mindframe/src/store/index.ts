@@ -1,3 +1,6 @@
+// src/store/index.ts (Aktualisierung)
+// Füge den DecisionWizard Reducer zum Root Reducer hinzu
+
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
@@ -14,7 +17,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './authSlice';
 import brainOrganizerReducer from '../modules/BrainOrganizer/store/BrainOrganizerSlice';
-
+import decisionWizardReducer from '../modules/DecisionWizard/store/decisionWizardSlice';
 
 // Zentrale Persistenz-Konfiguration
 const rootPersistConfig = {
@@ -34,6 +37,7 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   brainOrganizer: brainOrganizerReducer,
+  decisionWizard: decisionWizardReducer, // Hier fügen wir den DecisionWizard Reducer hinzu
 });
 
 // Konfiguriere den Store mit Middleware und Persistenz

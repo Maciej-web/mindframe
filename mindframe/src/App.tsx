@@ -1,4 +1,6 @@
-// src/App.tsx
+// src/App.tsx (Aktualisierung)
+// Füge die Decision Wizard Route zur App hinzu
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from './routes/ProtectedRoute';
 
@@ -13,16 +15,11 @@ import ForgotPassword from './modules/Auth/ForgotPassword.tsx';
 import Profile from './modules/Auth/Profile.tsx';
 import Settings from './modules/Auth/Settings.tsx';
 
+// Module
 import BrainOrganizer from './modules/BrainOrganizer';
+import DecisionWizard from './modules/DecisionWizard'; // Importiere das neue Modul
 
 // Placeholder für weitere Module
-
-const DecisionWizard = () => (
-  <div className="h-full flex items-center justify-center">
-    <h1 className="text-2xl font-bold">Decision Wizard Modul wird geladen...</h1>
-  </div>
-);
-
 const FocusMapper = () => (
   <div className="h-full flex items-center justify-center">
     <h1 className="text-2xl font-bold">Focus Mapper Modul wird geladen...</h1>
@@ -47,7 +44,8 @@ function App() {
         {/* Geschützte Routen */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/brain-organizer/*" element={<BrainOrganizer />} />          <Route path="/decision-wizard" element={<DecisionWizard />} />
+          <Route path="/brain-organizer/*" element={<BrainOrganizer />} />
+          <Route path="/decision-wizard/*" element={<DecisionWizard />} />
           <Route path="/focus-mapper" element={<FocusMapper />} />
           <Route path="/reflexionslogbuch" element={<Reflexionslogbuch />} />
           <Route path="/profile" element={<Profile />} />
